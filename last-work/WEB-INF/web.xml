@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <filter>
+        <filter-name>JSONFilter</filter-name>
+        <filter-class>filter.JSONFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>JSONFilter</filter-name>
+        <url-pattern>/ds/*</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>servlet.ZZM.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/CartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ShowServlet</servlet-name>
+        <servlet-class>servlet.ZZM.ShowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowServlet</servlet-name>
+        <url-pattern>/ShowServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CartDeleteServlet</servlet-name>
+        <servlet-class>servlet.ZZM.CartDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartDeleteServlet</servlet-name>
+        <url-pattern>/CartDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>jiezhangServlet</servlet-name>
+        <servlet-class>servlet.ZZM.jiezhangServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jiezhangServlet</servlet-name>
+        <url-pattern>/jiezhangServlet</url-pattern>
+    </servlet-mapping>
+</web-app>

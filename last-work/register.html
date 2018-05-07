@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册账号</title>
+    <link href="css/register.css" type="text/css" rel="stylesheet">
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/rainyday.js"></script>
+</head>
+<body onload="run();">
+<form action="RegisterServlet" method="post" class="register">
+    <img id="background" alt="background" src="" />
+
+    <div class="content">
+        <div class="main">
+        <div class="leftList">
+            <ul class="formList">
+                <li class="usernameregion">
+                    <label>
+                        <span class="red">用户名：</span>
+                    </label>
+                    <input type="text" placeholder="请输入用户名" id="strUsername" name="strUsername" class="inputStyle">
+                    <p class="username-txt">用户名不能为空！</p>
+                    <p class="username-txt hasUser">用户已存在</p>
+                </li>
+                <li class="usernameregion">
+                    <label>
+                        <span class="red">请设置密码：</span>
+                    </label>
+                    <input type="password" placeholder="请输入密码" id="strUsername1" name="strPassword" class="inputStyle">
+                    <p class="username-txt">请输入密码！</p>
+                    <p class='username-txt differ'>两次密码不同！</p>
+                </li>
+                <li class="usernameregion">
+                    <label>
+                        <span class="red">请确认密码：</span>
+                    </label>
+                    <input type="password" placeholder="请输入重复密码" id="strUsername2" name="strPasswordConfirm"
+                           class="inputStyle" onkeyup="validate()">
+                    <p class="username-txt">确认密码不能为空！</p>
+                </li>
+                <li class="usernameregion">
+                    <label>
+                        <span class="red">年龄：</span>
+                    </label>
+                    <input type="text" placeholder="年龄" id="strUsername3" name="strAge" class="inputStyle">
+                    <p class="username-txt">年龄不能为空！</p>
+                </li>
+                <li class="usernameregion">
+                    <label>
+                        <span class="red">请输入验证码：</span>
+                    </label>
+                    <input type="text" name="checkcode" placeholder="验证码" id="strUsername4"  class="inputStyle">
+                    <a  href="javascript:reloadCode();" id="piccode">
+                        <img alt="验证码" id="pidcode" src="imageservlet"/>
+                    </a>
+                    <p class="username-txt">验证码输入错误！</p>
+                </li>
+                <!--<li class="usernameregion">
+                    <label>
+                        <span class="red">请输入手机号码：</span>
+                    </label>
+                    <input type="text" id="strUsername4" name="strCode" class="inputStyle">
+                    <p class="username-txt">手机号码不能为空！</p>
+                </li>-->
+                <li id="li_submit">
+                    <label></label>
+                    <input type="button" value="立即注册" class="btnStyle submit">
+                </li>
+                <!--<li class="agr ">
+                    <label></label>
+                    <input type="checkbox" checked="checked" id="agree" name="agree">我同意<a href="" class="blue">《用户协议》</a>
+                </li>-->
+            </ul>
+        </div>
+
+        <div class="rightList">
+            <ul class="rightList-top">
+                <li>已有通行证账号，请直接登录</li>
+            <li class="btnBox">
+                <a href="login.jsp"><input type="button" value="登 录" class="btnStyle" ></a>
+            </li>
+            <li>您可以用其他方式登录：</li>
+            <li class="btnBox2">
+                <a href="mange/#/login/log"><input type="button" value="管理员登录" class="btnStyle2"></a>
+            </li>
+            </ul>
+            <div class="rightList-bottom">
+                <p>你还可以直接访问我们的商城:</p>
+                <a href="index.jsp" class="th radius" ><img src="img/logo.jpg"></a>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
+
+<script>
+    //背景图片特效
+    function run() {
+        var image = document.getElementById('background');
+        image.onload = function() {
+            var engine = new RainyDay({
+                image: this
+            });
+            engine.rain([ [0, 2, 200], [3, 3, 1] ], 100);
+        };
+        image.crossOrigin = 'anonymous';
+        image.src = 'img/register.jpg';
+    }
+
+
+
+    $('.submit').click(function(){
+        $('.username-txt').hide();
+        var flag=true;
+        $('.inputStyle').each(function(i){
+            if(!$(this).val()){
+                $(this).siblings('.username-txt').first().show();
+                flag=false;
+            }
+        });
+        var password = document.getElementById("strUsername1").value;
+        var repassword = document.getElementById("strUsername2").value;
+        if(password!=repassword){
+            $(".differ").show();
+            flag=false;
+        }
+        if(flag)    $('.register').submit();
+    })
+
+    //验证用户名是否存在
+    $('#strUsername').change(function () {
+        $('#strUsername').siblings('.username-txt').hide();
+        $.post('ds/hasUser', {
+            name: $('#strUsername').val()
+        }).success(function (data) {
+            if (data.success) {
+                $('.hasUser').show();
+            }
+        })
+    })
+
+    //重新加载验证码
+    function reloadCode(){
+        var date = new Date().getTime();
+        document.getElementById("pidcode").src="imageservlet?d="+date;
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+@CHARSET "UTF-8";
+body{
+    background-color: #fff;
+}
+*{
+    margin:0px;
+    padding:0px;
+    list-style:none;
+}
+
+.left{
+    height:1500px;
+    width:20%;
+    background-color: #808080;
+    float:left;
+    border-radius:20px;
+    margin-left:1px;
+}
+
+.right{
+    height:1450px;
+    width:79%;
+    background-color: #c0c0c0;
+    float:left;
+    border:1px #c0c0c0 solid;
+}
+
+#header{
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    height: 100px;
+    line-height: 18px;
+}
+
+.main{
+    width:1200px;
+    height:100px;
+    margin:auto;
+}
+
+
+
+#search{
+    width:550px;
+    height:45px;
+    float:right;
+    margin-top:40px ;
+}
+
+#search .search-input{
+    width:500px;
+    height:37px;
+    border:1px solid darkred;
+    font-size: 16px;
+    float: left;
+}
+
+.search-right{
+    width:41px;
+    height:37px;
+    float: left;
+}
+
+.content{
+    padding-bottom: 50px;
+}
+
+.content-main{
+    width:1210px;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.content-ul{
+    width:1210px;
+    margin-bottom: 10px;
+}
+
+.content-li{
+    width:290px;
+    height:300px;
+    margin-right:10px;
+    margin-bottom: 15px;
+    float: left;
+    border: 1px solid #cacaca;
+}
+
+.content-li:hover{
+    border-top:1px solid #cacaca;
+    border-left:1px solid #cacaca;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    cursor:pointer;
+}
+
+.content-li-pc{
+    width:288px;
+    height: 199px;
+    overflow: hidden;
+    border: 1px solid #f1f1f1;
+}
+
+.content-li-pc a img{
+    width: 100%;
+    transition:1s;
+}
+
+.content-li-pc a img:hover{
+    transform: scale(1.2);
+    box-shadow: 10px 15px 15px #ccc;
+
+}
+
+.content-li-text{
+    width:290px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.content-li-text p{
+    font-size: 1.2em;
+}
+
+.content-li-text1{
+    width:290px;
+    height:60px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.content-page{
+    width: 400px;
+    height: 50px;
+    margin:0 auto;
+    line-height: 50px;
+}
+
+.pagination li a{
+    font-size: 16px;
+    color: #0a0a0a;
+}
+
+.pagination li a:hover{
+    color:darkblue;
+}
+
+.select{
+    background-color: cornflowerblue;
+}
+
+.pagination .toPage{
+    margin-left: 10px;
+    width:26px;
+    height:26px;
+    font-size: 16px;
+    color: #1c8de0;
+}
+
+.sort{
+    width: 1200px;
+    margin: 0 auto;
+}
+.sort button{
+    float: right;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.pageList {
+    position: relative;
+}
+
+#page{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
